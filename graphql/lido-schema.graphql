@@ -1,0 +1,401 @@
+# Lido Finance Subgraph Schema
+# Source: https://github.com/lidofinance/lido-subgraph/blob/master/schema.graphql
+# Endpoint: https://api.thegraph.com/subgraphs/name/lidofinance/lido
+# Retrieved: 2026-06-14
+
+type LidoConfig @entity(immutable: false) {
+  id: ID!
+  insuranceFund: Bytes
+  oracle: Bytes
+  treasury: Bytes
+  isStopped: Boolean!
+  isStakingPaused: Boolean!
+  maxStakeLimit: BigInt!
+  stakeLimitIncreasePerBlock: BigInt!
+  elRewardsVault: Bytes
+  elRewardsWithdrawalLimitPoints: BigInt!
+  withdrawalCredentials: Bytes!
+  wcSetBy: Bytes
+  lidoLocator: Bytes
+}
+
+type LidoTransfer @entity(immutable: true) {
+  id: Bytes!
+  from: Bytes!
+  to: Bytes!
+  value: BigInt!
+  shares: BigInt!
+  sharesBeforeDecrease: BigInt
+  sharesAfterDecrease: BigInt
+  sharesBeforeIncrease: BigInt
+  sharesAfterIncrease: BigInt
+  totalPooledEther: BigInt!
+  totalShares: BigInt!
+  balanceAfterDecrease: BigInt
+  balanceAfterIncrease: BigInt
+  block: BigInt!
+  blockTime: BigInt!
+  transactionHash: Bytes!
+  transactionIndex: BigInt!
+  logIndex: BigInt!
+}
+
+type LidoApproval @entity(immutable: true) {
+  id: Bytes!
+  owner: Bytes!
+  spender: Bytes!
+  value: BigInt!
+}
+
+type LidoSubmission @entity(immutable: true) {
+  id: Bytes!
+  sender: Bytes!
+  amount: BigInt!
+  referral: Bytes!
+  shares: BigInt!
+  sharesBefore: BigInt!
+  sharesAfter: BigInt!
+  totalPooledEtherBefore: BigInt!
+  totalPooledEtherAfter: BigInt!
+  totalSharesBefore: BigInt!
+  totalSharesAfter: BigInt!
+  balanceAfter: BigInt!
+  block: BigInt!
+  blockTime: BigInt!
+  transactionHash: Bytes!
+  transactionIndex: BigInt!
+  logIndex: BigInt!
+}
+
+type NodeOperatorFees @entity(immutable: true) {
+  id: Bytes!
+  totalReward: TotalReward!
+  address: Bytes!
+  fee: BigInt!
+}
+
+type NodeOperatorsShares @entity(immutable: true) {
+  id: Bytes!
+  totalReward: TotalReward!
+  address: Bytes!
+  shares: BigInt!
+}
+
+type Totals @entity(immutable: false) {
+  id: ID!
+  totalPooledEther: BigInt!
+  totalShares: BigInt!
+  maxPositivePooledEtherDrift: BigInt!
+}
+
+type Stats @entity(immutable: false) {
+  id: ID!
+  uniqueHolders: BigInt!
+  uniqueAnytimeHolders: BigInt!
+  lastOracleCompletedId: BigInt!
+}
+
+type Shares @entity(immutable: false) {
+  id: Bytes!
+  shares: BigInt!
+}
+
+type Holder @entity(immutable: false) {
+  id: Bytes!
+  address: Bytes!
+  hasBalance: Boolean!
+}
+
+type CurrentFees @entity(immutable: false) {
+  id: ID!
+  feeBasisPoints: BigInt!
+  treasuryFeeBasisPoints: BigInt!
+  insuranceFeeBasisPoints: BigInt!
+  operatorsFeeBasisPoints: BigInt!
+}
+
+type SharesBurn @entity(immutable: true) {
+  id: Bytes!
+  account: Bytes!
+  postRebaseTokenAmount: BigInt!
+  preRebaseTokenAmount: BigInt!
+  sharesAmount: BigInt!
+}
+
+type OracleConfig @entity(immutable: false) {
+  id: ID!
+  quorum: BigInt!
+  contractVersion: BigInt!
+  allowedBeaconBalanceAnnualRelativeIncrease: BigInt!
+  allowedBeaconBalanceRelativeDecrease: BigInt!
+  epochsPerFrame: BigInt!
+  slotsPerEpoch: BigInt!
+  secondsPerSlot: BigInt!
+  genesisTime: BigInt!
+  beaconReportReceiver: Bytes!
+}
+
+type OracleReport @entity(immutable: false) {
+  id: ID!
+  totalReward: TotalReward!
+  hash: Bytes!
+  itemsProcessed: BigInt!
+  itemsCount: BigInt!
+}
+
+type OracleCompleted @entity(immutable: true) {
+  id: ID!
+  epochId: BigInt!
+  beaconBalance: BigInt!
+  beaconValidators: BigInt!
+  block: BigInt!
+  blockTime: BigInt!
+  transactionHash: Bytes!
+  logIndex: BigInt!
+}
+
+type TotalReward @entity(immutable: false) {
+  id: Bytes!
+  totalRewards: BigInt!
+  totalRewardsWithFees: BigInt!
+  mevFee: BigInt!
+  feeBasis: BigInt!
+  treasuryFeeBasisPoints: BigInt!
+  insuranceFeeBasisPoints: BigInt!
+  operatorsFeeBasisPoints: BigInt!
+  totalFee: BigInt!
+  nodeOperatorFees: [NodeOperatorFees!] @derivedFrom(field: "totalReward")
+  insuranceFee: BigInt!
+  operatorsFee: BigInt!
+  treasuryFee: BigInt!
+  dust: BigInt!
+  shares2mint: BigInt!
+  sharesToTreasury: BigInt!
+  sharesToInsuranceFund: BigInt!
+  sharesToOperators: BigInt!
+  nodeOperatorsShares: [NodeOperatorsShares!] @derivedFrom(field: "totalReward")
+  dustSharesToTreasury: BigInt!
+  totalPooledEtherBefore: BigInt!
+  totalPooledEtherAfter: BigInt!
+  totalSharesBefore: BigInt!
+  totalSharesAfter: BigInt!
+  timeElapsed: BigInt!
+  aprRaw: BigDecimal!
+  aprBeforeFees: BigDecimal!
+  apr: BigDecimal!
+  block: BigInt!
+  blockTime: BigInt!
+  transactionHash: Bytes!
+  transactionIndex: BigInt!
+  logIndex: BigInt!
+}
+
+type OracleMember @entity(immutable: false) {
+  id: Bytes!
+  member: Bytes!
+  removed: Boolean!
+  block: BigInt!
+  blockTime: BigInt!
+  transactionHash: Bytes!
+  logIndex: BigInt!
+}
+
+type OracleExpectedEpoch @entity(immutable: true) {
+  id: Bytes!
+  epochId: BigInt!
+}
+
+type BeaconReport @entity(immutable: true) {
+  id: Bytes!
+  epochId: BigInt!
+  beaconBalance: BigInt!
+  beaconValidators: BigInt!
+  caller: Bytes!
+}
+
+type NodeOperatorSigningKey @entity(immutable: false) {
+  id: Bytes!
+  operatorId: BigInt!
+  pubkey: Bytes!
+  removed: Boolean!
+  operator: NodeOperator!
+  block: BigInt!
+  blockTime: BigInt!
+  transactionHash: Bytes!
+  logIndex: BigInt!
+}
+
+type NodeOperator @entity(immutable: false) {
+  id: ID!
+  name: String!
+  rewardAddress: Bytes!
+  stakingLimit: BigInt!
+  active: Boolean!
+  totalStoppedValidators: BigInt
+  totalKeysTrimmed: BigInt!
+  nonce: BigInt!
+  block: BigInt!
+  blockTime: BigInt!
+  transactionHash: Bytes!
+  logIndex: BigInt!
+}
+
+type NodeOperatorKeysOpIndex @entity(immutable: false) {
+  id: Bytes!
+  index: BigInt!
+}
+
+type VotingConfig @entity(immutable: false) {
+  id: ID!
+  supportRequiredPct: BigInt!
+  minAcceptQuorumPct: BigInt!
+  voteTime: BigInt!
+  objectionPhaseTime: BigInt!
+}
+
+type Voting @entity(immutable: false) {
+  id: ID!
+  index: Int!
+  creator: Bytes!
+  metadata: String!
+  executed: Boolean!
+  votes: [Vote!]! @derivedFrom(field: "voting")
+  objections: [VotingObjection!]! @derivedFrom(field: "voting")
+  block: BigInt!
+  blockTime: BigInt!
+  transactionHash: Bytes!
+  logIndex: BigInt!
+}
+
+type Vote @entity(immutable: true) {
+  id: Bytes!
+  voting: Voting!
+  voter: Bytes!
+  supports: Boolean!
+  stake: BigInt!
+}
+
+type VotingObjection @entity(immutable: true) {
+  id: Bytes!
+  voting: Voting!
+  voter: Bytes!
+  stake: BigInt!
+}
+
+type Motion @entity(immutable: false) {
+  id: ID!
+  creator: Bytes!
+  evmScriptFactory: Bytes!
+  duration: BigInt
+  startDate: BigInt!
+  snapshotBlock: BigInt!
+  objectionsAmount: BigInt!
+  objectionsAmountPct: BigInt!
+  objectionsThreshold: BigInt
+  evmScriptHash: Bytes!
+  evmScriptCalldata: Bytes!
+  status: String!
+  enacted_at: BigInt
+  canceled_at: BigInt
+  rejected_at: BigInt
+  objections: [Objection!] @derivedFrom(field: "motion")
+  block: BigInt!
+  blockTime: BigInt!
+  transactionHash: Bytes!
+  logIndex: BigInt!
+}
+
+type EasyTrackConfig @entity(immutable: false) {
+  id: ID!
+  evmScriptExecutor: Bytes!
+  motionDuration: BigInt!
+  motionsCountLimit: BigInt!
+  objectionsThreshold: BigInt!
+  isPaused: Boolean!
+}
+
+type Role @entity(immutable: false) {
+  id: Bytes!
+  role: Bytes!
+  address: Bytes!
+  creator: Bytes!
+  isActive: Boolean!
+}
+
+type EVMScriptFactory @entity(immutable: false) {
+  id: Bytes!
+  address: Bytes!
+  permissions: Bytes!
+  isActive: Boolean!
+}
+
+type Objection @entity(immutable: true) {
+  id: Bytes!
+  motionId: BigInt!
+  objector: Bytes!
+  weight: BigInt!
+  motion: Motion!
+  block: BigInt!
+  blockTime: BigInt!
+  transactionHash: Bytes!
+  logIndex: BigInt!
+}
+
+type AppVersion @entity(immutable: false) {
+  id: Bytes!
+  major: Int!
+  minor: Int!
+  patch: Int!
+  impl: Bytes!
+  block: BigInt!
+  blockTime: BigInt!
+  transactionHash: Bytes!
+  logIndex: BigInt!
+}
+
+type WithdrawalQueueConfig @entity(immutable: false) {
+  id: ID!
+  isBunkerMode: Boolean!
+  bunkerModeSince: BigInt!
+  contractVersion: BigInt!
+  isPaused: Boolean!
+  pauseDuration: BigInt!
+}
+
+type WithdrawalClaimed @entity(immutable: true) {
+  id: Bytes!
+  requestId: BigInt!
+  owner: Bytes!
+  receiver: Bytes!
+  amountOfETH: BigInt!
+  block: BigInt!
+  blockTime: BigInt!
+  transactionHash: Bytes!
+  logIndex: BigInt!
+}
+
+type WithdrawalRequested @entity(immutable: true) {
+  id: Bytes!
+  requestId: BigInt!
+  requestor: Bytes!
+  owner: Bytes!
+  amountOfStETH: BigInt!
+  amountOfShares: BigInt!
+  block: BigInt!
+  blockTime: BigInt!
+  transactionHash: Bytes!
+  logIndex: BigInt!
+}
+
+type WithdrawalsFinalized @entity(immutable: true) {
+  id: Bytes!
+  from: BigInt!
+  to: BigInt!
+  amountOfETHLocked: BigInt!
+  sharesToBurn: BigInt!
+  timestamp: BigInt!
+  block: BigInt!
+  blockTime: BigInt!
+  transactionHash: Bytes!
+  logIndex: BigInt!
+}

@@ -1,310 +1,306 @@
 aid: lido
 name: Lido
-description: >-
-  Lido is the leading liquid staking protocol on Ethereum, allowing anyone to
-  stake ETH without locking it or running validator infrastructure. Stakers
-  deposit ETH and receive stETH — a rebasing ERC-20 that earns daily staking
-  rewards — or its non-rebasing wrapped form wstETH used widely across DeFi.
-  Lido is governed by the Lido DAO via the LDO token, Snapshot signaling,
-  on-chain Aragon voting, and a Dual Governance timelock that gives stETH
-  holders a dynamic veto over the DAO. The protocol's validator set is
-  delegated across multiple Staking Modules — the Curated Module (professional
-  node operators), Simple DVT (distributed validator technology via Obol and
-  SSV), the Community Staking Module (permissionless solo stakers backed by
-  bonded stETH), and stVaults (modular tailored setups). At over $18B TVL and
-  8.8M+ ETH staked, Lido is the #1 liquid staking provider by total value
-  locked. Lido previously operated on Polygon (stMATIC, sunset June 2025) and
-  Solana (stSOL, sunset February 2024); the protocol is now Ethereum-only.
-  Lido publishes the open-source core smart contracts, a TypeScript SDK
-  (`@lidofinance/lido-ethereum-sdk`), a Python oracle daemon, validator
-  monitoring tooling, frontend widgets, and three public read-only HTTP APIs
-  for protocol APR, reward history, and withdrawal queue timing.
+description: 'Lido is the leading liquid staking protocol on Ethereum, allowing anyone
+  to stake ETH without locking it or running validator infrastructure. Stakers deposit
+  ETH and receive stETH — a rebasing ERC-20 that earns daily staking rewards — or
+  its non-rebasing wrapped form wstETH used widely across DeFi. Lido is governed by
+  the Lido DAO via the LDO token, Snapshot signaling, on-chain Aragon voting, and
+  a Dual Governance timelock that gives stETH holders a dynamic veto over the DAO.
+  The protocol''s validator set is delegated across multiple Staking Modules — the
+  Curated Module (professional node operators), Simple DVT (distributed validator
+  technology via Obol and SSV), the Community Staking Module (permissionless solo
+  stakers backed by bonded stETH), and stVaults (modular tailored setups). At over
+  $18B TVL and 8.8M+ ETH staked, Lido is the #1 liquid staking provider by total value
+  locked. Lido previously operated on Polygon (stMATIC, sunset June 2025) and Solana
+  (stSOL, sunset February 2024); the protocol is now Ethereum-only. Lido publishes
+  the open-source core smart contracts, a TypeScript SDK (`@lidofinance/lido-ethereum-sdk`),
+  a Python oracle daemon, validator monitoring tooling, frontend widgets, and three
+  public read-only HTTP APIs for protocol APR, reward history, and withdrawal queue
+  timing.'
 type: Index
 position: Provider
 access: 3rd-Party
 image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
-  - Liquid Staking
-  - Ethereum
-  - Staking
-  - DeFi
-  - stETH
-  - wstETH
-  - Validators
-  - Node Operators
-  - DAO
-  - Governance
-  - LDO
-  - Oracle
-  - Open Source
-  - Web3
-  - Smart Contracts
-  - Distributed Validator Technology
-  - Community Staking Module
+- Liquid Staking
+- Ethereum
+- Staking
+- DeFi
+- stETH
+- wstETH
+- Validators
+- Node Operators
+- DAO
+- Governance
+- LDO
+- Oracle
+- Open Source
+- Web3
+- Smart Contracts
+- Distributed Validator Technology
+- Community Staking Module
 url: https://raw.githubusercontent.com/api-evangelist/lido/refs/heads/main/apis.yml
 created: '2026-05-24'
 modified: '2026-05-24'
 specificationVersion: '0.20'
 apis:
-  - aid: lido:lido-apr-api
-    name: Lido APR API
-    description: >-
-      Read-only HTTP API returning the latest stETH staking APR and a 7-day
-      simple moving average APR. Used by integrators, dashboards, and DeFi
-      protocols to display Lido's current annualized yield. The Lido V2+ APR is
-      computed from on-chain rebase events. A Hoodi testnet endpoint mirrors
-      the same shape.
-    humanURL: https://docs.lido.fi/integrations/api
-    tags:
-      - APR
-      - Yield
-      - stETH
-      - Statistics
-    properties:
-      - type: Documentation
-        url: https://docs.lido.fi/integrations/api
-      - type: Endpoint
-        url: https://eth-api.lido.fi/v1/protocol/steth/apr/last
-      - type: Endpoint
-        url: https://eth-api.lido.fi/v1/protocol/steth/apr/sma
-      - type: Endpoint
-        url: https://eth-api-hoodi.testnet.fi/v1/protocol/steth/apr/last
-  - aid: lido:lido-reward-history-api
-    name: Lido Reward History API
-    description: >-
-      Read-only HTTP API returning a per-address stETH reward history including
-      USD/EUR/GBP fiat conversions, with options to filter to rewards-only,
-      sort, paginate, and choose archival rate sources. Used by wallets, tax
-      tools, and accounting integrations to surface a staker's accrued rewards.
-    humanURL: https://docs.lido.fi/integrations/api
-    tags:
-      - Rewards
-      - History
-      - stETH
-      - Accounting
-    properties:
-      - type: Documentation
-        url: https://docs.lido.fi/integrations/api
-      - type: Endpoint
-        url: https://reward-history-backend.lido.fi/
-      - type: Endpoint
-        url: http://reward-history-backend-hoodi.testnet.fi/
-  - aid: lido:lido-withdrawals-api
-    name: Lido Withdrawals API
-    description: >-
-      Read-only HTTP API for the Lido stETH withdrawal queue. Returns estimated
-      finalization times for one or more withdrawal request IDs, and can
-      forecast the expected wait time for a hypothetical withdrawal amount.
-      Used by the Lido staking widget and third-party UIs that surface unstake
-      timing.
-    humanURL: https://docs.lido.fi/integrations/api
-    tags:
-      - Withdrawals
-      - Queue
-      - stETH
-      - Unstake
-    properties:
-      - type: Documentation
-        url: https://docs.lido.fi/integrations/api
-      - type: Endpoint
-        url: https://wq-api.lido.fi/v2/request-time
-      - type: Endpoint
-        url: https://wq-api.lido.fi/v2/request-time/calculate
-      - type: Endpoint
-        url: https://wq-api-hoodi.testnet.fi/v2/request-time
-  - aid: lido:lido-keys-api
-    name: Lido Keys API
-    description: >-
-      Service that exposes node operator validator keys from each Lido staking
-      module (Curated, Simple DVT, CSM) for use by deposit security
-      infrastructure, validator monitoring, and integrators. Open-source under
-      `lidofinance/lido-keys-api`.
-    humanURL: https://github.com/lidofinance/lido-keys-api
-    tags:
-      - Keys
-      - Validators
-      - Node Operators
-      - Staking Modules
-    properties:
-      - type: Documentation
-        url: https://github.com/lidofinance/lido-keys-api
-      - type: SourceCode
-        url: https://github.com/lidofinance/lido-keys-api
-common:
-  - type: Website
-    url: https://lido.fi
-  - type: StakingApp
-    url: https://stake.lido.fi
+- aid: lido:lido-apr-api
+  name: Lido APR API
+  description: Read-only HTTP API returning the latest stETH staking APR and a 7-day
+    simple moving average APR. Used by integrators, dashboards, and DeFi protocols
+    to display Lido's current annualized yield. The Lido V2+ APR is computed from
+    on-chain rebase events. A Hoodi testnet endpoint mirrors the same shape.
+  humanURL: https://docs.lido.fi/integrations/api
+  tags:
+  - APR
+  - Yield
+  - stETH
+  - Statistics
+  properties:
   - type: Documentation
-    url: https://docs.lido.fi
-  - type: Portal
     url: https://docs.lido.fi/integrations/api
-  - type: GitHubOrganization
-    url: https://github.com/lidofinance
-  - type: Blog
-    url: https://blog.lido.fi
-  - type: Forum
-    url: https://research.lido.fi
-  - type: Governance
-    url: https://vote.lido.fi
-  - type: Grants
-    url: https://lego.lido.fi
-  - type: NodeOperatorPortal
-    url: https://operatorportal.lido.fi
-  - type: Scorecard
-    url: https://scorecard.lido.fi
-  - type: HelpCenter
-    url: https://help.lido.fi
-  - type: BugBounty
-    url: https://immunefi.com/bug-bounty/lido/
-  - type: Audits
-    url: https://github.com/lidofinance/audits
-  - type: SmartContracts
-    url: https://github.com/lidofinance/core
-    name: Lido Core Contracts
-  - type: SmartContracts
-    url: https://github.com/lidofinance/community-staking-module
-    name: Community Staking Module
-  - type: SmartContracts
-    url: https://github.com/lidofinance/dual-governance
-    name: Dual Governance
-  - type: SmartContracts
-    url: https://github.com/lidofinance/lido-l2
-    name: Lido L2 (wstETH bridges)
-  - type: SDK
-    url: https://github.com/lidofinance/lido-ethereum-sdk
-    name: Lido Ethereum SDK (TypeScript)
-  - type: SDK
-    url: https://www.npmjs.com/package/@lidofinance/lido-ethereum-sdk
-    name: "@lidofinance/lido-ethereum-sdk on npm"
-  - type: SDK
-    url: https://lidofinance.github.io/lido-ethereum-sdk/
-    name: Lido Ethereum SDK Reference
-  - type: SDK
-    url: https://github.com/lidofinance/lido-js-sdk
-    name: Lido JS SDK (legacy)
-  - type: CLI
-    url: https://github.com/lidofinance/lido-cli
-    name: Lido CLI
-  - type: Tool
-    url: https://github.com/lidofinance/lido-oracle
-    name: Lido Oracle (Python daemon)
-  - type: Tool
-    url: https://github.com/lidofinance/ethereum-validators-monitoring
-    name: Ethereum Validators Monitoring
-  - type: Tool
-    url: https://github.com/lidofinance/ethereum-head-watcher
-    name: Ethereum Head Watcher
-  - type: Tool
-    url: https://github.com/lidofinance/onchain-mon
-    name: On-chain Monitoring
-  - type: Tool
-    url: https://github.com/lidofinance/depositor-bot
-    name: Depositor Bot
-  - type: Tool
-    url: https://github.com/lidofinance/lido-council-daemon
-    name: Lido Council Daemon
-  - type: Tool
-    url: https://github.com/lidofinance/validator-ejector
-    name: Validator Ejector
-  - type: Tool
-    url: https://github.com/lidofinance/easy-track
-    name: Easy Track (DAO motions)
-  - type: Tool
-    url: https://github.com/lidofinance/diffyscan
-    name: Diffyscan (GitHub vs Etherscan diff)
-  - type: Tool
-    url: https://github.com/lidofinance/state-mate
-    name: State Mate (contract state validator)
-  - type: Subgraph
-    url: https://github.com/lidofinance/lido-subgraph
-    name: Lido Subgraph
-  - type: UIComponents
-    url: https://github.com/lidofinance/ui
-    name: Lido UI Components
-  - type: Widget
-    url: https://github.com/lidofinance/ethereum-staking-widget
-    name: Ethereum Staking Widget
-  - type: Widget
-    url: https://github.com/lidofinance/csm-widget
-    name: CSM Widget
-  - type: Template
-    url: https://github.com/lidofinance/lido-frontend-template
-    name: Lido Frontend Template
-  - type: ImprovementProposals
-    url: https://github.com/lidofinance/lido-improvement-proposals
-    name: Lido Improvement Proposals (LIPs)
+  - type: Endpoint
+    url: https://eth-api.lido.fi/v1/protocol/steth/apr/last
+  - type: Endpoint
+    url: https://eth-api.lido.fi/v1/protocol/steth/apr/sma
+  - type: Endpoint
+    url: https://eth-api-hoodi.testnet.fi/v1/protocol/steth/apr/last
+  - url: graphql/lido-graphql.md
+    type: GraphQL
+- aid: lido:lido-reward-history-api
+  name: Lido Reward History API
+  description: Read-only HTTP API returning a per-address stETH reward history including
+    USD/EUR/GBP fiat conversions, with options to filter to rewards-only, sort, paginate,
+    and choose archival rate sources. Used by wallets, tax tools, and accounting integrations
+    to surface a staker's accrued rewards.
+  humanURL: https://docs.lido.fi/integrations/api
+  tags:
+  - Rewards
+  - History
+  - stETH
+  - Accounting
+  properties:
   - type: Documentation
-    url: https://docs.lido.fi/deployed-contracts/
-    name: Deployed Contracts
+    url: https://docs.lido.fi/integrations/api
+  - type: Endpoint
+    url: https://reward-history-backend.lido.fi/
+  - type: Endpoint
+    url: http://reward-history-backend-hoodi.testnet.fi/
+- aid: lido:lido-withdrawals-api
+  name: Lido Withdrawals API
+  description: Read-only HTTP API for the Lido stETH withdrawal queue. Returns estimated
+    finalization times for one or more withdrawal request IDs, and can forecast the
+    expected wait time for a hypothetical withdrawal amount. Used by the Lido staking
+    widget and third-party UIs that surface unstake timing.
+  humanURL: https://docs.lido.fi/integrations/api
+  tags:
+  - Withdrawals
+  - Queue
+  - stETH
+  - Unstake
+  properties:
   - type: Documentation
-    url: https://docs.lido.fi/contracts/lido
-    name: Lido Contract
+    url: https://docs.lido.fi/integrations/api
+  - type: Endpoint
+    url: https://wq-api.lido.fi/v2/request-time
+  - type: Endpoint
+    url: https://wq-api.lido.fi/v2/request-time/calculate
+  - type: Endpoint
+    url: https://wq-api-hoodi.testnet.fi/v2/request-time
+- aid: lido:lido-keys-api
+  name: Lido Keys API
+  description: Service that exposes node operator validator keys from each Lido staking
+    module (Curated, Simple DVT, CSM) for use by deposit security infrastructure,
+    validator monitoring, and integrators. Open-source under `lidofinance/lido-keys-api`.
+  humanURL: https://github.com/lidofinance/lido-keys-api
+  tags:
+  - Keys
+  - Validators
+  - Node Operators
+  - Staking Modules
+  properties:
   - type: Documentation
-    url: https://docs.lido.fi/contracts/wsteth
-    name: wstETH Contract
-  - type: Documentation
-    url: https://docs.lido.fi/contracts/withdrawal-queue-erc721
-    name: WithdrawalQueueERC721
-  - type: Documentation
-    url: https://docs.lido.fi/contracts/staking-router
-    name: StakingRouter
-  - type: Documentation
-    url: https://docs.lido.fi/staking-modules/csm/intro
-    name: Community Staking Module
-  - type: Documentation
-    url: https://docs.lido.fi/guides/node-operators/general-overview
-    name: Node Operator Guide
-  - type: Documentation
-    url: https://docs.lido.fi/guides/oracle-operator-manual
-    name: Oracle Operator Manual
-  - type: Twitter
-    url: https://twitter.com/LidoFinance
-  - type: LinkedIn
-    url: https://www.linkedin.com/company/lidofinance
-  - type: Discord
-    url: https://discord.gg/lido
-  - type: Telegram
-    url: https://t.me/lidofinance
-  - type: YouTube
-    url: https://www.youtube.com/@LidoFinance
-  - type: TokenContract
-    url: https://etherscan.io/token/0xae7ab96520de3a18e5e111b5eaab095312d7fe84
-    name: stETH (ERC-20)
-  - type: TokenContract
-    url: https://etherscan.io/token/0x7f39c581f595b53c5cb19bd0b3f8da6c935e2ca0
-    name: wstETH (ERC-20)
-  - type: TokenContract
-    url: https://etherscan.io/token/0x5a98fcbea516cf06857215779fd812ca3bef1b32
-    name: LDO (governance)
-  - type: Features
-    data:
-      - stETH liquid staking token — rebasing ERC-20 tracking 1 ETH 1:1, daily rewards via on-chain rebase
-      - wstETH wrapped non-rebasing ERC-20 used widely across DeFi (Aave, Maker, Curve, Balancer, etc.)
-      - Curated Staking Module — DAO-approved professional node operators
-      - Simple DVT Module — distributed validator technology powered by Obol and SSV
-      - Community Staking Module (CSM) — permissionless solo-staker module with bonded stETH
-      - stVaults — modular tailored validator setups
-      - Dual Governance — stETH holder veto with dynamic timelock over the LDO DAO
-      - Withdrawals (since Lido V2 / Shapella) via WithdrawalQueueERC721 NFTs
-      - Lido Oracle — Python daemon submitting consensus layer accounting reports
-      - Validator Ejector and Council Daemon for deposit security and forced exits
-      - Public read-only HTTP APIs for APR, reward history, and withdrawal queue
-      - Lido Ethereum SDK in TypeScript for staking, wrapping, withdrawals, rewards
-      - Lido CLI, Diffyscan, State Mate and Ethereum Validators Monitoring tooling
-      - Easy Track for delegated DAO motions and treasury operations
-      - LEGO grants program funding ecosystem and integration work
-      - Over $18B TVL and 8.8M+ ETH staked — #1 liquid staking protocol by TVL
-      - Previously supported Polygon (stMATIC) and Solana (stSOL), both sunset
-    sources:
-      - https://lido.fi
-      - https://docs.lido.fi
-      - https://github.com/lidofinance
-      - https://research.lido.fi
-      - https://blog.lido.fi/sunset-lido-on-solana/
-      - https://research.lido.fi/t/sunset-lido-on-polygon/5655
-    updated: '2026-05-24'
+    url: https://github.com/lidofinance/lido-keys-api
+  - type: SourceCode
+    url: https://github.com/lidofinance/lido-keys-api
+common:
+- type: Website
+  url: https://lido.fi
+- type: StakingApp
+  url: https://stake.lido.fi
+- type: Documentation
+  url: https://docs.lido.fi
+- type: Portal
+  url: https://docs.lido.fi/integrations/api
+- type: GitHubOrganization
+  url: https://github.com/lidofinance
+- type: Blog
+  url: https://blog.lido.fi
+- type: Forum
+  url: https://research.lido.fi
+- type: Governance
+  url: https://vote.lido.fi
+- type: Grants
+  url: https://lego.lido.fi
+- type: NodeOperatorPortal
+  url: https://operatorportal.lido.fi
+- type: Scorecard
+  url: https://scorecard.lido.fi
+- type: HelpCenter
+  url: https://help.lido.fi
+- type: BugBounty
+  url: https://immunefi.com/bug-bounty/lido/
+- type: Audits
+  url: https://github.com/lidofinance/audits
+- type: SmartContracts
+  url: https://github.com/lidofinance/core
+  name: Lido Core Contracts
+- type: SmartContracts
+  url: https://github.com/lidofinance/community-staking-module
+  name: Community Staking Module
+- type: SmartContracts
+  url: https://github.com/lidofinance/dual-governance
+  name: Dual Governance
+- type: SmartContracts
+  url: https://github.com/lidofinance/lido-l2
+  name: Lido L2 (wstETH bridges)
+- type: SDK
+  url: https://github.com/lidofinance/lido-ethereum-sdk
+  name: Lido Ethereum SDK (TypeScript)
+- type: SDK
+  url: https://www.npmjs.com/package/@lidofinance/lido-ethereum-sdk
+  name: '@lidofinance/lido-ethereum-sdk on npm'
+- type: SDK
+  url: https://lidofinance.github.io/lido-ethereum-sdk/
+  name: Lido Ethereum SDK Reference
+- type: SDK
+  url: https://github.com/lidofinance/lido-js-sdk
+  name: Lido JS SDK (legacy)
+- type: CLI
+  url: https://github.com/lidofinance/lido-cli
+  name: Lido CLI
+- type: Tool
+  url: https://github.com/lidofinance/lido-oracle
+  name: Lido Oracle (Python daemon)
+- type: Tool
+  url: https://github.com/lidofinance/ethereum-validators-monitoring
+  name: Ethereum Validators Monitoring
+- type: Tool
+  url: https://github.com/lidofinance/ethereum-head-watcher
+  name: Ethereum Head Watcher
+- type: Tool
+  url: https://github.com/lidofinance/onchain-mon
+  name: On-chain Monitoring
+- type: Tool
+  url: https://github.com/lidofinance/depositor-bot
+  name: Depositor Bot
+- type: Tool
+  url: https://github.com/lidofinance/lido-council-daemon
+  name: Lido Council Daemon
+- type: Tool
+  url: https://github.com/lidofinance/validator-ejector
+  name: Validator Ejector
+- type: Tool
+  url: https://github.com/lidofinance/easy-track
+  name: Easy Track (DAO motions)
+- type: Tool
+  url: https://github.com/lidofinance/diffyscan
+  name: Diffyscan (GitHub vs Etherscan diff)
+- type: Tool
+  url: https://github.com/lidofinance/state-mate
+  name: State Mate (contract state validator)
+- type: Subgraph
+  url: https://github.com/lidofinance/lido-subgraph
+  name: Lido Subgraph
+- type: UIComponents
+  url: https://github.com/lidofinance/ui
+  name: Lido UI Components
+- type: Widget
+  url: https://github.com/lidofinance/ethereum-staking-widget
+  name: Ethereum Staking Widget
+- type: Widget
+  url: https://github.com/lidofinance/csm-widget
+  name: CSM Widget
+- type: Template
+  url: https://github.com/lidofinance/lido-frontend-template
+  name: Lido Frontend Template
+- type: ImprovementProposals
+  url: https://github.com/lidofinance/lido-improvement-proposals
+  name: Lido Improvement Proposals (LIPs)
+- type: Documentation
+  url: https://docs.lido.fi/deployed-contracts/
+  name: Deployed Contracts
+- type: Documentation
+  url: https://docs.lido.fi/contracts/lido
+  name: Lido Contract
+- type: Documentation
+  url: https://docs.lido.fi/contracts/wsteth
+  name: wstETH Contract
+- type: Documentation
+  url: https://docs.lido.fi/contracts/withdrawal-queue-erc721
+  name: WithdrawalQueueERC721
+- type: Documentation
+  url: https://docs.lido.fi/contracts/staking-router
+  name: StakingRouter
+- type: Documentation
+  url: https://docs.lido.fi/staking-modules/csm/intro
+  name: Community Staking Module
+- type: Documentation
+  url: https://docs.lido.fi/guides/node-operators/general-overview
+  name: Node Operator Guide
+- type: Documentation
+  url: https://docs.lido.fi/guides/oracle-operator-manual
+  name: Oracle Operator Manual
+- type: Twitter
+  url: https://twitter.com/LidoFinance
+- type: LinkedIn
+  url: https://www.linkedin.com/company/lidofinance
+- type: Discord
+  url: https://discord.gg/lido
+- type: Telegram
+  url: https://t.me/lidofinance
+- type: YouTube
+  url: https://www.youtube.com/@LidoFinance
+- type: TokenContract
+  url: https://etherscan.io/token/0xae7ab96520de3a18e5e111b5eaab095312d7fe84
+  name: stETH (ERC-20)
+- type: TokenContract
+  url: https://etherscan.io/token/0x7f39c581f595b53c5cb19bd0b3f8da6c935e2ca0
+  name: wstETH (ERC-20)
+- type: TokenContract
+  url: https://etherscan.io/token/0x5a98fcbea516cf06857215779fd812ca3bef1b32
+  name: LDO (governance)
+- type: Features
+  data:
+  - stETH liquid staking token — rebasing ERC-20 tracking 1 ETH 1:1, daily rewards
+    via on-chain rebase
+  - wstETH wrapped non-rebasing ERC-20 used widely across DeFi (Aave, Maker, Curve,
+    Balancer, etc.)
+  - Curated Staking Module — DAO-approved professional node operators
+  - Simple DVT Module — distributed validator technology powered by Obol and SSV
+  - Community Staking Module (CSM) — permissionless solo-staker module with bonded
+    stETH
+  - stVaults — modular tailored validator setups
+  - Dual Governance — stETH holder veto with dynamic timelock over the LDO DAO
+  - Withdrawals (since Lido V2 / Shapella) via WithdrawalQueueERC721 NFTs
+  - Lido Oracle — Python daemon submitting consensus layer accounting reports
+  - Validator Ejector and Council Daemon for deposit security and forced exits
+  - Public read-only HTTP APIs for APR, reward history, and withdrawal queue
+  - Lido Ethereum SDK in TypeScript for staking, wrapping, withdrawals, rewards
+  - Lido CLI, Diffyscan, State Mate and Ethereum Validators Monitoring tooling
+  - Easy Track for delegated DAO motions and treasury operations
+  - LEGO grants program funding ecosystem and integration work
+  - Over $18B TVL and 8.8M+ ETH staked —
+  - Previously supported Polygon (stMATIC) and Solana (stSOL), both sunset
+  sources:
+  - https://lido.fi
+  - https://docs.lido.fi
+  - https://github.com/lidofinance
+  - https://research.lido.fi
+  - https://blog.lido.fi/sunset-lido-on-solana/
+  - https://research.lido.fi/t/sunset-lido-on-polygon/5655
+  updated: '2026-05-24'
 maintainers:
-  - FN: Kin Lane
-    email: kin@apievangelist.com
-    url: https://apievangelist.com
+- FN: Kin Lane
+  email: kin@apievangelist.com
+  url: https://apievangelist.com
