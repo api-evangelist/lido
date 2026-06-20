@@ -20,7 +20,7 @@ description: 'Lido is the leading liquid staking protocol on Ethereum, allowing 
 type: Index
 position: Provider
 access: 3rd-Party
-image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 tags:
 - Liquid Staking
 - Ethereum
