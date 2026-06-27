@@ -136,7 +136,7 @@ common:
   url: https://github.com/lidofinance
 - type: Blog
   url: https://blog.lido.fi
-- type: Forum
+- type: Forums
   url: https://research.lido.fi
 - type: Governance
   url: https://vote.lido.fi
@@ -164,49 +164,49 @@ common:
 - type: SmartContracts
   url: https://github.com/lidofinance/lido-l2
   name: Lido L2 (wstETH bridges)
-- type: SDK
+- type: SDKs
   url: https://github.com/lidofinance/lido-ethereum-sdk
   name: Lido Ethereum SDK (TypeScript)
-- type: SDK
+- type: SDKs
   url: https://www.npmjs.com/package/@lidofinance/lido-ethereum-sdk
   name: '@lidofinance/lido-ethereum-sdk on npm'
-- type: SDK
+- type: SDKs
   url: https://lidofinance.github.io/lido-ethereum-sdk/
   name: Lido Ethereum SDK Reference
-- type: SDK
+- type: SDKs
   url: https://github.com/lidofinance/lido-js-sdk
   name: Lido JS SDK (legacy)
 - type: CLI
   url: https://github.com/lidofinance/lido-cli
   name: Lido CLI
-- type: Tool
+- type: Tools
   url: https://github.com/lidofinance/lido-oracle
   name: Lido Oracle (Python daemon)
-- type: Tool
+- type: Tools
   url: https://github.com/lidofinance/ethereum-validators-monitoring
   name: Ethereum Validators Monitoring
-- type: Tool
+- type: Tools
   url: https://github.com/lidofinance/ethereum-head-watcher
   name: Ethereum Head Watcher
-- type: Tool
+- type: Tools
   url: https://github.com/lidofinance/onchain-mon
   name: On-chain Monitoring
-- type: Tool
+- type: Tools
   url: https://github.com/lidofinance/depositor-bot
   name: Depositor Bot
-- type: Tool
+- type: Tools
   url: https://github.com/lidofinance/lido-council-daemon
   name: Lido Council Daemon
-- type: Tool
+- type: Tools
   url: https://github.com/lidofinance/validator-ejector
   name: Validator Ejector
-- type: Tool
+- type: Tools
   url: https://github.com/lidofinance/easy-track
   name: Easy Track (DAO motions)
-- type: Tool
+- type: Tools
   url: https://github.com/lidofinance/diffyscan
   name: Diffyscan (GitHub vs Etherscan diff)
-- type: Tool
+- type: Tools
   url: https://github.com/lidofinance/state-mate
   name: State Mate (contract state validator)
 - type: Subgraph
