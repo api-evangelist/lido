@@ -124,6 +124,10 @@ apis:
   - type: SourceCode
     url: https://github.com/lidofinance/lido-keys-api
 common:
+- type: VulnerabilityDisclosure
+  url: security/lido-vulnerability-disclosure.yml
+- type: DomainSecurity
+  url: security/lido-domain-security.yml
 - type: Website
   url: https://lido.fi
 - type: StakingApp
