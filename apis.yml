@@ -135,6 +135,13 @@ apis:
   - type: SourceCode
     url: https://github.com/lidofinance/lido-keys-api
 common:
+- type: IssueTracker
+  url: https://github.com/lidofinance/lido-keys-api/issues
+- type: Releases
+  url: https://github.com/lidofinance/lido-keys-api/releases
+- type: License
+  name: MIT
+  url: https://github.com/lidofinance/lido-keys-api/blob/develop/LICENSE
 - type: VulnerabilityDisclosure
   url: security/lido-vulnerability-disclosure.yml
 - type: DomainSecurity
