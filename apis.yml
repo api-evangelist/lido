@@ -18,6 +18,18 @@ description: 'Lido is the leading liquid staking protocol on Ethereum, allowing 
   public read-only HTTP APIs for protocol APR, reward history, and withdrawal queue
   timing.'
 type: Index
+deliveryModel:
+  model: self-hosted
+  license: MIT
+  open_source: true
+  commercial: false
+  callable_host: false
+  label: Self-hosted open source · you run it yourself
+  confidence: high
+  source:
+  - license
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: unknown
   onboarding: unknown
