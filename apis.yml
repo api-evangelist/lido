@@ -51,7 +51,7 @@ tags:
 - DeFi
 - stETH
 - wstETH
-- Validators
+- Validator
 - Node Operators
 - DAO
 - Governance
@@ -136,6 +136,11 @@ apis:
   humanURL: https://docs.lido.fi/integrations/api
   tags:
   - Withdrawals
+  - Queues
+  - stETH
+  - Unstake
+  tags_raw:
+  - Withdrawals
   - Queue
   - stETH
   - Unstake
@@ -155,6 +160,11 @@ apis:
     validator monitoring, and integrators. Open-source under `lidofinance/lido-keys-api`.
   humanURL: https://github.com/lidofinance/lido-keys-api
   tags:
+  - Keys
+  - Validator
+  - Node Operators
+  - Staking Modules
+  tags_raw:
   - Keys
   - Validators
   - Node Operators
