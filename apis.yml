@@ -57,7 +57,7 @@ tags:
 - Governance
 - LDO
 - Oracle
-- Open-Source
+- Open Source
 - Web3
 - Smart Contracts
 - Distributed Validator Technology
@@ -80,6 +80,7 @@ tags_raw:
 - Smart Contracts
 - Distributed Validator Technology
 - Community Staking Module
+- Open-Source
 url: https://raw.githubusercontent.com/api-evangelist/lido/refs/heads/main/apis.yml
 created: '2026-05-24'
 modified: '2026-05-24'
@@ -87,10 +88,10 @@ specificationVersion: '0.23'
 apis:
 - aid: lido:lido-apr-api
   name: Lido APR API
-  description: Read-only HTTP API returning the latest stETH staking APR and a 7-day
-    simple moving average APR. Used by integrators, dashboards, and DeFi protocols
-    to display Lido's current annualized yield. The Lido V2+ APR is computed from
-    on-chain rebase events. A Hoodi testnet endpoint mirrors the same shape.
+  description: >-
+    Read-only HTTP API returning the latest stETH staking APR and a 7-day simple moving average APR. Used
+    by integrators, dashboards, and DeFi protocols to display Lido's current annualized yield. The Lido
+    V2+ APR is computed from on-chain rebase events. A Hoodi testnet endpoint mirrors the same shape.
   humanURL: https://docs.lido.fi/integrations/api
   tags:
   - APR
@@ -110,10 +111,10 @@ apis:
     type: GraphQL
 - aid: lido:lido-reward-history-api
   name: Lido Reward History API
-  description: Read-only HTTP API returning a per-address stETH reward history including
-    USD/EUR/GBP fiat conversions, with options to filter to rewards-only, sort, paginate,
-    and choose archival rate sources. Used by wallets, tax tools, and accounting integrations
-    to surface a staker's accrued rewards.
+  description: >-
+    Read-only HTTP API returning a per-address stETH reward history including USD/EUR/GBP fiat conversions,
+    with options to filter to rewards-only, sort, paginate, and choose archival rate sources. Used by
+    wallets, tax tools, and accounting integrations to surface a staker's accrued rewards.
   humanURL: https://docs.lido.fi/integrations/api
   tags:
   - Rewards
@@ -129,10 +130,10 @@ apis:
     url: http://reward-history-backend-hoodi.testnet.fi/
 - aid: lido:lido-withdrawals-api
   name: Lido Withdrawals API
-  description: Read-only HTTP API for the Lido stETH withdrawal queue. Returns estimated
-    finalization times for one or more withdrawal request IDs, and can forecast the
-    expected wait time for a hypothetical withdrawal amount. Used by the Lido staking
-    widget and third-party UIs that surface unstake timing.
+  description: >-
+    Read-only HTTP API for the Lido stETH withdrawal queue. Returns estimated finalization times for one
+    or more withdrawal request IDs, and can forecast the expected wait time for a hypothetical withdrawal
+    amount. Used by the Lido staking widget and third-party UIs that surface unstake timing.
   humanURL: https://docs.lido.fi/integrations/api
   tags:
   - Withdrawals
@@ -155,9 +156,10 @@ apis:
     url: https://wq-api-hoodi.testnet.fi/v2/request-time
 - aid: lido:lido-keys-api
   name: Lido Keys API
-  description: Service that exposes node operator validator keys from each Lido staking
-    module (Curated, Simple DVT, CSM) for use by deposit security infrastructure,
-    validator monitoring, and integrators. Open-source under `lidofinance/lido-keys-api`.
+  description: >-
+    Service that exposes node operator validator keys from each Lido staking module (Curated, Simple DVT,
+    CSM) for use by deposit security infrastructure, validator monitoring, and integrators. Open-source
+    under `lidofinance/lido-keys-api`.
   humanURL: https://github.com/lidofinance/lido-keys-api
   tags:
   - Keys
@@ -174,6 +176,136 @@ apis:
     url: https://github.com/lidofinance/lido-keys-api
   - type: SourceCode
     url: https://github.com/lidofinance/lido-keys-api
+- aid: lido:lido-subgraph
+  name: Lido Subgraph (GraphQL)
+  description: >-
+    GraphQL subgraph deployed to The Graph Decentralized Network that indexes Lido smart-contract events
+    — rewards distribution, oracle reports, stETH transfers and submissions, node operator keys — and
+    exposes them for query.
+  humanURL: https://docs.lido.fi/integrations/subgraph
+  baseURL: https://gateway-arbitrum.network.thegraph.com
+  tags:
+  - GraphQL
+  - Subgraph
+  - Indexing
+  properties:
+  - type: GraphQL
+    url: graphql/lido-finance-subgraph-schema.graphql
+  - type: Documentation
+    url: https://docs.lido.fi/integrations/subgraph
+- aid: lido:lido-apr-for-eth-and-steth-api
+  name: Lido APR for Eth and stEth API
+  description: The APR for Eth and stEth API from Lido — 8 operation(s) for apr for eth and steth.
+  humanURL: https://docs.lido.fi/integrations/api
+  baseURL: https://gateway-arbitrum.network.thegraph.com
+  tags:
+  - APR for Eth and stEth
+  properties:
+  - type: OpenAPI
+    url: openapi/lido-apr-for-eth-and-steth-api-openapi.yml
+  - type: Swagger
+    url: https://eth-api.lido.fi/api
+  - type: Documentation
+    url: https://docs.lido.fi/integrations/api
+  - type: Swagger
+    url: https://wq-api.lido.fi/api
+- aid: lido:lido-estimate-api
+  name: Lido Estimate API
+  description: The Estimate API from Lido — 1 operation(s) for estimate.
+  humanURL: https://docs.lido.fi/integrations/api
+  baseURL: https://gateway-arbitrum.network.thegraph.com
+  tags:
+  - Estimate
+  properties:
+  - type: OpenAPI
+    url: openapi/lido-estimate-api-openapi.yml
+  - type: Swagger
+    url: https://eth-api.lido.fi/api
+  - type: Documentation
+    url: https://docs.lido.fi/integrations/api
+  - type: Swagger
+    url: https://wq-api.lido.fi/api
+- aid: lido:lido-nft-api
+  name: Lido NFT API
+  description: The NFT API from Lido — 2 operation(s) for nft.
+  humanURL: https://docs.lido.fi/integrations/api
+  baseURL: https://gateway-arbitrum.network.thegraph.com
+  tags:
+  - NFT
+  properties:
+  - type: OpenAPI
+    url: openapi/lido-nft-api-openapi.yml
+  - type: Swagger
+    url: https://eth-api.lido.fi/api
+  - type: Documentation
+    url: https://docs.lido.fi/integrations/api
+  - type: Swagger
+    url: https://wq-api.lido.fi/api
+- aid: lido:lido-request-time-api
+  name: Lido Request Time API
+  description: The Request Time API from Lido — 3 operation(s) for request time.
+  humanURL: https://docs.lido.fi/integrations/api
+  baseURL: https://gateway-arbitrum.network.thegraph.com
+  tags:
+  - Request Time
+  properties:
+  - type: OpenAPI
+    url: openapi/lido-request-time-api-openapi.yml
+  - type: Swagger
+    url: https://eth-api.lido.fi/api
+  - type: Documentation
+    url: https://docs.lido.fi/integrations/api
+  - type: Swagger
+    url: https://wq-api.lido.fi/api
+- aid: lido:lido-rewards-api
+  name: Lido Rewards API
+  description: The Rewards API from Lido — 1 operation(s) for rewards.
+  humanURL: https://docs.lido.fi/integrations/api
+  baseURL: https://gateway-arbitrum.network.thegraph.com
+  tags:
+  - Rewards
+  properties:
+  - type: OpenAPI
+    url: openapi/lido-rewards-api-openapi.yml
+  - type: Swagger
+    url: https://eth-api.lido.fi/api
+  - type: Documentation
+    url: https://docs.lido.fi/integrations/api
+  - type: Swagger
+    url: https://wq-api.lido.fi/api
+- aid: lido:lido-swap-rate-for-steth-and-wsteth-api
+  name: Lido Swap rate for stETH and wstETH API
+  description: >-
+    The Swap rate for stETH and wstETH API from Lido — 2 operation(s) for swap rate for steth and wsteth.
+  humanURL: https://docs.lido.fi/integrations/api
+  baseURL: https://gateway-arbitrum.network.thegraph.com
+  tags:
+  - Swap rate for stETH and wstETH
+  properties:
+  - type: OpenAPI
+    url: openapi/lido-swap-rate-for-steth-and-wsteth-api-openapi.yml
+  - type: Swagger
+    url: https://eth-api.lido.fi/api
+  - type: Documentation
+    url: https://docs.lido.fi/integrations/api
+  - type: Swagger
+    url: https://wq-api.lido.fi/api
+- aid: lido:lido-validators-api
+  name: Lido Validators API
+  description: The Validators API from Lido — 1 operation(s) for validators.
+  humanURL: https://docs.lido.fi/integrations/api
+  baseURL: https://gateway-arbitrum.network.thegraph.com
+  tags:
+  - Validators
+  properties:
+  - type: OpenAPI
+    url: openapi/lido-validators-api-openapi.yml
+  - type: Swagger
+    url: https://eth-api.lido.fi/api
+  - type: Documentation
+    url: https://docs.lido.fi/integrations/api
+  - type: Swagger
+    url: https://wq-api.lido.fi/api
 common:
 - type: IssueTracker
   url: https://github.com/lidofinance/lido-keys-api/issues
@@ -366,3 +498,6 @@ maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
   url: https://apievangelist.com
+x-backed-by:
+- a16z
+- paradigm

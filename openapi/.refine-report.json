@@ -1,0 +1,38 @@
+{
+  "provider": "lido",
+  "sources": [
+    "lido-finance-apr-for-eth-and-steth-api-openapi.yml",
+    "lido-finance-estimate-api-openapi.yml",
+    "lido-finance-nft-api-openapi.yml",
+    "lido-finance-request-time-api-openapi.yml",
+    "lido-finance-rewards-api-openapi.yml",
+    "lido-finance-swap-rate-for-steth-and-wsteth-api-openapi.yml",
+    "lido-finance-validators-api-openapi.yml"
+  ],
+  "outputs": [
+    "lido-apr-for-eth-and-steth-api-openapi.yml",
+    "lido-estimate-api-openapi.yml",
+    "lido-nft-api-openapi.yml",
+    "lido-request-time-api-openapi.yml",
+    "lido-rewards-api-openapi.yml",
+    "lido-swap-rate-for-steth-and-wsteth-api-openapi.yml",
+    "lido-validators-api-openapi.yml"
+  ],
+  "archived": [
+    "archived openapi/lido-finance-apr-for-eth-and-steth-api-openapi.yml",
+    "archived openapi/lido-finance-estimate-api-openapi.yml",
+    "archived openapi/lido-finance-nft-api-openapi.yml",
+    "archived openapi/lido-finance-request-time-api-openapi.yml",
+    "archived openapi/lido-finance-rewards-api-openapi.yml",
+    "archived openapi/lido-finance-swap-rate-for-steth-and-wsteth-api-openapi.yml",
+    "archived openapi/lido-finance-validators-api-openapi.yml"
+  ],
+  "errors": [],
+  "warnings": [
+    "no openapi/_original/ archive: this run re-split PREVIOUSLY REFINED output, so any base URL it carries is inherited from an earlier pass rather than read from a document the provider published"
+  ],
+  "notes": [
+    "apis.yml register: written (+7 apis, 12 total)"
+  ],
+  "skipped": []
+}
