@@ -208,20 +208,16 @@ components:
       - pageSize
       - itemCount
       - pageCount
-    Apr:
+    SmaResponse:
       type: object
       properties:
-        timeUnix:
-          type: number
-          example: 1665663911
-          description: Block unix timestamp in seconds
-        apr:
-          type: number
-          example: 5.1
-          description: Annual percentage rate
+        data:
+          $ref: '#/components/schemas/SmaApr'
+        meta:
+          $ref: '#/components/schemas/ProtocolMeta'
       required:
-      - timeUnix
-      - apr
+      - data
+      - meta
     SmaApr:
       type: object
       properties:
@@ -237,49 +233,6 @@ components:
       required:
       - aprs
       - smaApr
-    SmaResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/SmaApr'
-        meta:
-          $ref: '#/components/schemas/ProtocolMeta'
-      required:
-      - data
-      - meta
-    ShortStatsResponse:
-      type: object
-      properties:
-        uniqueAnytimeHolders:
-          type: string
-        uniqueHolders:
-          type: string
-        totalStaked:
-          type: string
-        marketCap:
-          type: number
-      required:
-      - uniqueAnytimeHolders
-      - uniqueHolders
-      - totalStaked
-      - marketCap
-    ProtocolLastResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/Apr'
-        meta:
-          $ref: '#/components/schemas/ProtocolMeta'
-      required:
-      - data
-      - meta
-    PriceResponse:
-      type: object
-      properties:
-        price:
-          type: number
-      required:
-      - price
     ProtocolResponse:
       type: object
       properties:
@@ -295,6 +248,20 @@ components:
       - data
       - meta
       - pagination
+    Apr:
+      type: object
+      properties:
+        timeUnix:
+          type: number
+          example: 1665663911
+          description: Block unix timestamp in seconds
+        apr:
+          type: number
+          example: 5.1
+          description: Annual percentage rate
+      required:
+      - timeUnix
+      - apr
     ProtocolMeta:
       type: object
       properties:
@@ -312,3 +279,36 @@ components:
       - symbol
       - address
       - chainId
+    ShortStatsResponse:
+      type: object
+      properties:
+        uniqueAnytimeHolders:
+          type: string
+        uniqueHolders:
+          type: string
+        totalStaked:
+          type: string
+        marketCap:
+          type: number
+      required:
+      - uniqueAnytimeHolders
+      - uniqueHolders
+      - totalStaked
+      - marketCap
+    PriceResponse:
+      type: object
+      properties:
+        price:
+          type: number
+      required:
+      - price
+    ProtocolLastResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/Apr'
+        meta:
+          $ref: '#/components/schemas/ProtocolMeta'
+      required:
+      - data
+      - meta

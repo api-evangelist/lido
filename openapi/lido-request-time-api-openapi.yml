@@ -123,6 +123,44 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    RequestTimeDto:
+      type: object
+      properties:
+        days:
+          type: number
+          example: 5
+          description: Maximum waiting days
+        stethLastUpdate:
+          type: number
+          example: 0
+          description: Queue ETH last update timestamp
+        validatorsLastUpdate:
+          type: number
+          example: 0
+          description: Validators last update timestamp
+        requests:
+          type: number
+          example: 10
+          description: Queue requests count
+        steth:
+          type: string
+          example: 0
+          description: Queue steth amount
+        status:
+          type: string
+          description: Status of request calculation
+          enum:
+          - initializing
+          - calculating
+          - finalized
+          - calculated
+      required:
+      - days
+      - stethLastUpdate
+      - validatorsLastUpdate
+      - requests
+      - steth
+      - status
     RequestTimeV2Dto:
       type: object
       properties:
@@ -201,6 +239,27 @@ components:
       - statusCode
       - message
       - error
+    RequestTimeByRequestIdDto:
+      type: object
+      properties:
+        requestInfo:
+          $ref: '#/components/schemas/RequestByIdInfoDto'
+        status:
+          type: string
+          description: Status of request calculation
+          enum:
+          - initializing
+          - calculating
+          - finalized
+          - calculated
+        nextCalculationAt:
+          type: string
+          description: Next calculation time at
+          example: '2023-10-03T11:14:24.202Z'
+      required:
+      - requestInfo
+      - status
+      - nextCalculationAt
     RequestInfoDto:
       type: object
       properties:
@@ -228,62 +287,3 @@ components:
       - finalizationIn
       - finalizationAt
       - type
-    RequestTimeByRequestIdDto:
-      type: object
-      properties:
-        requestInfo:
-          $ref: '#/components/schemas/RequestByIdInfoDto'
-        status:
-          type: string
-          description: Status of request calculation
-          enum:
-          - initializing
-          - calculating
-          - finalized
-          - calculated
-        nextCalculationAt:
-          type: string
-          description: Next calculation time at
-          example: '2023-10-03T11:14:24.202Z'
-      required:
-      - requestInfo
-      - status
-      - nextCalculationAt
-    RequestTimeDto:
-      type: object
-      properties:
-        days:
-          type: number
-          example: 5
-          description: Maximum waiting days
-        stethLastUpdate:
-          type: number
-          example: 0
-          description: Queue ETH last update timestamp
-        validatorsLastUpdate:
-          type: number
-          example: 0
-          description: Validators last update timestamp
-        requests:
-          type: number
-          example: 10
-          description: Queue requests count
-        steth:
-          type: string
-          example: 0
-          description: Queue steth amount
-        status:
-          type: string
-          description: Status of request calculation
-          enum:
-          - initializing
-          - calculating
-          - finalized
-          - calculated
-      required:
-      - days
-      - stethLastUpdate
-      - validatorsLastUpdate
-      - requests
-      - steth
-      - status

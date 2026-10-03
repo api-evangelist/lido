@@ -1,13 +1,13 @@
 {
   "provider": "lido",
   "sources": [
-    "lido-finance-apr-for-eth-and-steth-api-openapi.yml",
-    "lido-finance-estimate-api-openapi.yml",
-    "lido-finance-nft-api-openapi.yml",
-    "lido-finance-request-time-api-openapi.yml",
-    "lido-finance-rewards-api-openapi.yml",
-    "lido-finance-swap-rate-for-steth-and-wsteth-api-openapi.yml",
-    "lido-finance-validators-api-openapi.yml"
+    "_original/lido-finance-apr-for-eth-and-steth-api-openapi.yml",
+    "_original/lido-finance-estimate-api-openapi.yml",
+    "_original/lido-finance-nft-api-openapi.yml",
+    "_original/lido-finance-request-time-api-openapi.yml",
+    "_original/lido-finance-rewards-api-openapi.yml",
+    "_original/lido-finance-swap-rate-for-steth-and-wsteth-api-openapi.yml",
+    "_original/lido-finance-validators-api-openapi.yml"
   ],
   "outputs": [
     "lido-apr-for-eth-and-steth-api-openapi.yml",
@@ -18,21 +18,20 @@
     "lido-swap-rate-for-steth-and-wsteth-api-openapi.yml",
     "lido-validators-api-openapi.yml"
   ],
-  "archived": [
-    "archived openapi/lido-finance-apr-for-eth-and-steth-api-openapi.yml",
-    "archived openapi/lido-finance-estimate-api-openapi.yml",
-    "archived openapi/lido-finance-nft-api-openapi.yml",
-    "archived openapi/lido-finance-request-time-api-openapi.yml",
-    "archived openapi/lido-finance-rewards-api-openapi.yml",
-    "archived openapi/lido-finance-swap-rate-for-steth-and-wsteth-api-openapi.yml",
-    "archived openapi/lido-finance-validators-api-openapi.yml"
-  ],
+  "archived": [],
   "errors": [],
-  "warnings": [
-    "no openapi/_original/ archive: this run re-split PREVIOUSLY REFINED output, so any base URL it carries is inherited from an earlier pass rather than read from a document the provider published"
-  ],
+  "warnings": [],
   "notes": [
-    "apis.yml register: written (+7 apis, 12 total)"
+    "sourced from openapi/_original/ (7 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "apis.yml register: already-registered"
   ],
-  "skipped": []
+  "skipped": [
+    "lido-apr-for-eth-and-steth-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "lido-estimate-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "lido-nft-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "lido-request-time-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "lido-rewards-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "lido-swap-rate-for-steth-and-wsteth-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "lido-validators-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
