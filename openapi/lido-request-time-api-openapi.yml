@@ -123,6 +123,64 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    RequestByIdInfoDto:
+      type: object
+      properties:
+        finalizationIn:
+          type: number
+          example: 5
+          description: Possible waiting ms
+        finalizationAt:
+          type: string
+          example: '2023-10-04T15:14:24.202Z'
+          description: Possible finalization At
+        requestId:
+          type: string
+          example: 5
+          description: Request Id
+        requestedAt:
+          type: string
+          example: '2023-10-03T15:14:24.202Z'
+          description: Withdrawal requested at
+        type:
+          type: string
+          example: buffer
+          description: Case of calculation
+          enum:
+          - buffer
+          - bunker
+          - vaultsBalance
+          - rewardsOnly
+          - validatorBalances
+          - requestTimestampMargin
+          - exitValidators
+      required:
+      - finalizationIn
+      - finalizationAt
+      - requestId
+      - requestedAt
+      - type
+    RequestTimeV2Dto:
+      type: object
+      properties:
+        requestInfo:
+          $ref: '#/components/schemas/RequestInfoDto'
+        status:
+          type: string
+          description: Status of request calculation
+          enum:
+          - initializing
+          - calculating
+          - finalized
+          - calculated
+        nextCalculationAt:
+          type: string
+          description: Next calculation time at
+          example: '2023-10-03T11:14:24.202Z'
+      required:
+      - requestInfo
+      - status
+      - nextCalculationAt
     RequestTimeDto:
       type: object
       properties:
@@ -161,84 +219,6 @@ components:
       - requests
       - steth
       - status
-    RequestTimeV2Dto:
-      type: object
-      properties:
-        requestInfo:
-          $ref: '#/components/schemas/RequestInfoDto'
-        status:
-          type: string
-          description: Status of request calculation
-          enum:
-          - initializing
-          - calculating
-          - finalized
-          - calculated
-        nextCalculationAt:
-          type: string
-          description: Next calculation time at
-          example: '2023-10-03T11:14:24.202Z'
-      required:
-      - requestInfo
-      - status
-      - nextCalculationAt
-    RequestByIdInfoDto:
-      type: object
-      properties:
-        finalizationIn:
-          type: number
-          example: 5
-          description: Possible waiting ms
-        finalizationAt:
-          type: string
-          example: '2023-10-04T15:14:24.202Z'
-          description: Possible finalization At
-        requestId:
-          type: string
-          example: 5
-          description: Request Id
-        requestedAt:
-          type: string
-          example: '2023-10-03T15:14:24.202Z'
-          description: Withdrawal requested at
-        type:
-          type: string
-          example: buffer
-          description: Case of calculation
-          enum:
-          - buffer
-          - bunker
-          - vaultsBalance
-          - rewardsOnly
-          - validatorBalances
-          - requestTimestampMargin
-          - exitValidators
-      required:
-      - finalizationIn
-      - finalizationAt
-      - requestId
-      - requestedAt
-      - type
-    ErrorResponseType:
-      type: object
-      properties:
-        statusCode:
-          type: number
-          example: 400
-          description: Http status code
-        message:
-          description: Array of validation error messages
-          type: array
-          items:
-            type: string
-        error:
-          type: string
-          description: Error text
-          example: Bad Request
-      required:
-      - statusCode
-      - message
-      - error
     RequestTimeByRequestIdDto:
       type: object
       properties:
@@ -287,3 +267,23 @@ components:
       - finalizationIn
       - finalizationAt
       - type
+    ErrorResponseType:
+      type: object
+      properties:
+        statusCode:
+          type: number
+          example: 400
+          description: Http status code
+        message:
+          description: Array of validation error messages
+          type: array
+          items:
+            type: string
+        error:
+          type: string
+          description: Error text
+          example: Bad Request
+      required:
+      - statusCode
+      - message
+      - error

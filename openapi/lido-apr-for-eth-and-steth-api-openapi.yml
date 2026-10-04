@@ -186,6 +186,32 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    SmaResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/SmaApr'
+        meta:
+          $ref: '#/components/schemas/ProtocolMeta'
+      required:
+      - data
+      - meta
+    ShortStatsResponse:
+      type: object
+      properties:
+        uniqueAnytimeHolders:
+          type: string
+        uniqueHolders:
+          type: string
+        totalStaked:
+          type: string
+        marketCap:
+          type: number
+      required:
+      - uniqueAnytimeHolders
+      - uniqueHolders
+      - totalStaked
+      - marketCap
     Pagination:
       type: object
       properties:
@@ -208,60 +234,13 @@ components:
       - pageSize
       - itemCount
       - pageCount
-    SmaResponse:
+    PriceResponse:
       type: object
       properties:
-        data:
-          $ref: '#/components/schemas/SmaApr'
-        meta:
-          $ref: '#/components/schemas/ProtocolMeta'
-      required:
-      - data
-      - meta
-    SmaApr:
-      type: object
-      properties:
-        aprs:
-          description: List of APR with timestamp for 7 days
-          type: array
-          items:
-            $ref: '#/components/schemas/Apr'
-        smaApr:
+        price:
           type: number
-          example: 5.1
-          description: Simple Moving Average Apr for last 7 days in db
       required:
-      - aprs
-      - smaApr
-    ProtocolResponse:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Apr'
-        meta:
-          $ref: '#/components/schemas/ProtocolMeta'
-        pagination:
-          $ref: '#/components/schemas/Pagination'
-      required:
-      - data
-      - meta
-      - pagination
-    Apr:
-      type: object
-      properties:
-        timeUnix:
-          type: number
-          example: 1665663911
-          description: Block unix timestamp in seconds
-        apr:
-          type: number
-          example: 5.1
-          description: Annual percentage rate
-      required:
-      - timeUnix
-      - apr
+      - price
     ProtocolMeta:
       type: object
       properties:
@@ -279,29 +258,35 @@ components:
       - symbol
       - address
       - chainId
-    ShortStatsResponse:
+    Apr:
       type: object
       properties:
-        uniqueAnytimeHolders:
-          type: string
-        uniqueHolders:
-          type: string
-        totalStaked:
-          type: string
-        marketCap:
+        timeUnix:
           type: number
+          example: 1665663911
+          description: Block unix timestamp in seconds
+        apr:
+          type: number
+          example: 5.1
+          description: Annual percentage rate
       required:
-      - uniqueAnytimeHolders
-      - uniqueHolders
-      - totalStaked
-      - marketCap
-    PriceResponse:
+      - timeUnix
+      - apr
+    SmaApr:
       type: object
       properties:
-        price:
+        aprs:
+          description: List of APR with timestamp for 7 days
+          type: array
+          items:
+            $ref: '#/components/schemas/Apr'
+        smaApr:
           type: number
+          example: 5.1
+          description: Simple Moving Average Apr for last 7 days in db
       required:
-      - price
+      - aprs
+      - smaApr
     ProtocolLastResponse:
       type: object
       properties:
@@ -312,3 +297,18 @@ components:
       required:
       - data
       - meta
+    ProtocolResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Apr'
+        meta:
+          $ref: '#/components/schemas/ProtocolMeta'
+        pagination:
+          $ref: '#/components/schemas/Pagination'
+      required:
+      - data
+      - meta
+      - pagination
