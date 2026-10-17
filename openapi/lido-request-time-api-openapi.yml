@@ -123,6 +123,26 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    ErrorResponseType:
+      type: object
+      properties:
+        statusCode:
+          type: number
+          example: 400
+          description: Http status code
+        message:
+          description: Array of validation error messages
+          type: array
+          items:
+            type: string
+        error:
+          type: string
+          description: Error text
+          example: Bad Request
+      required:
+      - statusCode
+      - message
+      - error
     RequestByIdInfoDto:
       type: object
       properties:
@@ -160,27 +180,6 @@ components:
       - requestId
       - requestedAt
       - type
-    RequestTimeV2Dto:
-      type: object
-      properties:
-        requestInfo:
-          $ref: '#/components/schemas/RequestInfoDto'
-        status:
-          type: string
-          description: Status of request calculation
-          enum:
-          - initializing
-          - calculating
-          - finalized
-          - calculated
-        nextCalculationAt:
-          type: string
-          description: Next calculation time at
-          example: '2023-10-03T11:14:24.202Z'
-      required:
-      - requestInfo
-      - status
-      - nextCalculationAt
     RequestTimeDto:
       type: object
       properties:
@@ -240,6 +239,27 @@ components:
       - requestInfo
       - status
       - nextCalculationAt
+    RequestTimeV2Dto:
+      type: object
+      properties:
+        requestInfo:
+          $ref: '#/components/schemas/RequestInfoDto'
+        status:
+          type: string
+          description: Status of request calculation
+          enum:
+          - initializing
+          - calculating
+          - finalized
+          - calculated
+        nextCalculationAt:
+          type: string
+          description: Next calculation time at
+          example: '2023-10-03T11:14:24.202Z'
+      required:
+      - requestInfo
+      - status
+      - nextCalculationAt
     RequestInfoDto:
       type: object
       properties:
@@ -267,23 +287,3 @@ components:
       - finalizationIn
       - finalizationAt
       - type
-    ErrorResponseType:
-      type: object
-      properties:
-        statusCode:
-          type: number
-          example: 400
-          description: Http status code
-        message:
-          description: Array of validation error messages
-          type: array
-          items:
-            type: string
-        error:
-          type: string
-          description: Error text
-          example: Bad Request
-      required:
-      - statusCode
-      - message
-      - error
