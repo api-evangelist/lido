@@ -28,6 +28,25 @@ edges:
     sector: Crypto
   detected_by: sweep-vc-portfolios.py
   first_seen: '2026-10-21'
+- partner_name: Ansible (ansible-galaxy)
+  partner: ansible
+  partner_match: mirror
+  mirror_match: register
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: ansible-galaxy
+  evidence: https://galaxy.ansible.com/ui/repo/published/lidofinance/server/
+  mirror_of: ansible/integrations/ansible-integration-edges.yml
+  apps:
+  - lidofinance.server
+  listing_count: 1
+  detected: '2026-10-22'
+  detected_by: mirror-platform-listings.py
+  category: configuration-management content listing (Ansible collection)
+  badges:
+  - Verified publisher (GitHub domain-verified organization)
 generated: '2026-10-21'
 method: searched
 source:
@@ -44,3 +63,4 @@ checked:
 - https://www.indexventures.com/companies/
 - https://www.sequoiacap.com/our-companies/
 - https://www.sequoiacap.com/sitemap.xml
+- ansible/integrations/ansible-integration-edges.yml

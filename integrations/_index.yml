@@ -33,3 +33,16 @@
     sector: Crypto
   status: not-a-workflow
   arazzo: null
+- slug: lido-ansible-ansible-galaxy
+  label: Ansible (ansible-galaxy)
+  partner: ansible
+  partner_name: Ansible (ansible-galaxy)
+  category: configuration-management content listing (Ansible collection)
+  type: marketplace
+  marketplace: ansible-galaxy
+  channel: partner-built
+  evidence: https://galaxy.ansible.com/ui/repo/published/lidofinance/server/
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
