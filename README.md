@@ -64,51 +64,104 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Lido — Ethereum liquid staking protocol (stETH / wstETH); #1 liquid staking provider by TVL.
+Lido is the leading liquid staking protocol on Ethereum, allowing anyone to stake ETH without locking it or running validator infrastructure. Stakers deposit ETH and receive stETH — a rebasing ERC-20 that earns daily staking rewards — or its non-rebasing wrapped form wstETH used widely across DeFi. Lido is governed by the Lido DAO via the LDO token, Snapshot signaling, on-chain Aragon voting, and a Dual Governance timelock that gives stETH holders a dynamic veto over the DAO. The protocol's validator set is delegated across multiple Staking Modules — the Curated Module (professional node operators), Simple DVT (distributed validator technology via Obol and SSV), the Community Staking Module (permissionless solo stakers backed by bonded stETH), and stVaults (modular tailored setups). At over $18B TVL and 8.8M+ ETH staked, Lido is the #1 liquid staking provider by total value locked. Lido previously operated on Polygon (stMATIC, sunset June 2025) and Solana (stSOL, sunset February 2024); the protocol is now Ethereum-only. Lido publishes the open-source core smart contracts, a TypeScript SDK (`@lidofinance/lido-ethereum-sdk`), a Python oracle daemon, validator monitoring tooling, frontend widgets, and three public read-only HTTP APIs for protocol APR, reward history, and withdrawal queue timing.
 
-## Overview
+**Areas:** Liquid Staking · Ethereum · Staking · DeFi · stETH · wstETH · Validator · Node Operators · DAO · Governance · LDO · Oracle
 
-Lido is the leading liquid staking protocol on Ethereum. Users deposit ETH and receive stETH, a rebasing ERC-20 that earns daily staking rewards, or its wrapped non-rebasing form wstETH that flows freely across DeFi. The protocol is governed by the Lido DAO via the LDO token, with on-chain Aragon voting, off-chain Snapshot signaling, and a Dual Governance timelock giving stETH holders a dynamic veto over the DAO.
+## Lido on APIs.io
 
-Lido's validator set is delegated across multiple Staking Modules — the Curated Module of professional node operators, Simple DVT (Obol + SSV), the permissionless Community Staking Module backed by bonded stETH, and stVaults for tailored modular setups. With over $18B TVL and 8.8M+ ETH staked, Lido is the #1 liquid staking provider by total value locked.
+Everything profiled for Lido is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/lido/](https://apis.io/providers/lido/)** — or go straight to one of the APIs or properties below.
 
-Lido previously operated on Polygon (stMATIC, sunset June 2025) and Solana (stSOL, sunset February 2024); the protocol is now Ethereum-only.
+### APIs (12)
 
-## Public HTTP APIs
+- [Lido APR API](https://apis.io/apis/lido/lido-apr-api/) — Read-only HTTP API returning the latest stETH staking APR and a 7-day simple moving average APR. Used by integrators, dashboards, and DeFi protocols to…
+- [Lido Reward History API](https://apis.io/apis/lido/lido-reward-history-api/) — Read-only HTTP API returning a per-address stETH reward history including USD/EUR/GBP fiat conversions, with options to filter to rewards-only, sort,…
+- [Lido Withdrawals API](https://apis.io/apis/lido/lido-withdrawals-api/) — Read-only HTTP API for the Lido stETH withdrawal queue. Returns estimated finalization times for one or more withdrawal request IDs, and can forecast the…
+- [Lido Keys API](https://apis.io/apis/lido/lido-keys-api/) — Service that exposes node operator validator keys from each Lido staking module (Curated, Simple DVT, CSM) for use by deposit security infrastructure,…
+- [Lido Subgraph (GraphQL)](https://apis.io/apis/lido/lido-subgraph/) — GraphQL subgraph deployed to The Graph Decentralized Network that indexes Lido smart-contract events — rewards distribution, oracle reports, stETH transfers…
+- [Lido APR for Eth and stEth API](https://apis.io/apis/lido/lido-apr-for-eth-and-steth-api/) — The APR for Eth and stEth API from Lido — 8 operation(s) for apr for eth and steth.
+- [Lido Estimate API](https://apis.io/apis/lido/lido-estimate-api/) — The Estimate API from Lido — 1 operation(s) for estimate.
+- [Lido NFT API](https://apis.io/apis/lido/lido-nft-api/) — The NFT API from Lido — 2 operation(s) for nft.
+- [Lido Request Time API](https://apis.io/apis/lido/lido-request-time-api/) — The Request Time API from Lido — 3 operation(s) for request time.
+- [Lido Rewards API](https://apis.io/apis/lido/lido-rewards-api/) — The Rewards API from Lido — 1 operation(s) for rewards.
+- [Lido Swap rate for stETH and wstETH API](https://apis.io/apis/lido/lido-swap-rate-for-steth-and-wsteth-api/) — The Swap rate for stETH and wstETH API from Lido — 2 operation(s) for swap rate for steth and wsteth.
+- [Lido Validators API](https://apis.io/apis/lido/lido-validators-api/) — The Validators API from Lido — 1 operation(s) for validators.
 
-| API | Purpose | Base URL |
-| --- | --- | --- |
-| Lido APR API | Latest and 7-day SMA stETH staking APR | `https://eth-api.lido.fi/v1/protocol/steth/apr/` |
-| Reward History API | Per-address stETH reward history with fiat conversion | `https://reward-history-backend.lido.fi/` |
-| Withdrawals API | Estimated withdrawal queue finalization times | `https://wq-api.lido.fi/v2/request-time` |
-| Keys API | Node operator validator keys across staking modules | `https://github.com/lidofinance/lido-keys-api` |
+### Published properties
 
-A mirror of each public API runs on the Hoodi testnet (`*.testnet.fi`).
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## Open Source
+#### GraphQL (1)
 
-- Core smart contracts: [lidofinance/core](https://github.com/lidofinance/core) (Solidity, GPL-3.0)
-- Community Staking Module: [lidofinance/community-staking-module](https://github.com/lidofinance/community-staking-module)
-- Dual Governance: [lidofinance/dual-governance](https://github.com/lidofinance/dual-governance)
-- TypeScript SDK: [`@lidofinance/lido-ethereum-sdk`](https://www.npmjs.com/package/@lidofinance/lido-ethereum-sdk) (MIT)
-- Lido Oracle: [lidofinance/lido-oracle](https://github.com/lidofinance/lido-oracle) (Python daemon)
-- Validator monitoring: [lidofinance/ethereum-validators-monitoring](https://github.com/lidofinance/ethereum-validators-monitoring)
-- CLI: [lidofinance/lido-cli](https://github.com/lidofinance/lido-cli)
-- Staking widget: [lidofinance/ethereum-staking-widget](https://github.com/lidofinance/ethereum-staking-widget)
-- Subgraph: [lidofinance/lido-subgraph](https://github.com/lidofinance/lido-subgraph)
-- LIPs: [lidofinance/lido-improvement-proposals](https://github.com/lidofinance/lido-improvement-proposals)
+GraphQL schemas.
 
-## Resources
+- [Lido Finance GraphQL API](https://apis.io/graphqls/lido/lido-graphql/)
 
-- Website: <https://lido.fi>
-- Staking app: <https://stake.lido.fi>
-- Documentation: <https://docs.lido.fi>
-- Governance forum: <https://research.lido.fi>
-- Blog: <https://blog.lido.fi>
-- GitHub org: <https://github.com/lidofinance>
-- Bug bounty (Immunefi): <https://immunefi.com/bug-bounty/lido/>
-- Audits: <https://github.com/lidofinance/audits>
+#### Security (2)
 
-## APIs.json
+Authentication, trust centre, and vulnerability disclosure.
 
-This repository follows the [APIs.json](https://apisjson.org/) specification. See [`apis.yml`](./apis.yml).
+- [Lido Domain Security](https://apis.io/security/lido/lido-domain-security/)
+- [Lido Vulnerability Disclosure](https://apis.io/security/lido/lido-vulnerability-disclosure/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://lido.fi)
+- [Documentation](https://docs.lido.fi)
+- [Blog](https://blog.lido.fi)
+- [GitHub](https://github.com/lidofinance)
+
+## API Evangelist rating
+
+**Kin Score 27.8** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 62.5 |
+| Contract quality | 39.9 |
+| Contract governance | 0.0 |
+| Operational transparency | 18.4 |
+| Developer ergonomics | 50.0 |
+| Access clarity | 0.0 |
+
+**Agent readiness 21.7** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | — |
+| Reversibility Documented | na |
+| MCP Server | — |
+| Auth Clarity | — |
+| Idempotency | na |
+| Error Semantics | verified |
+| OpenAPI Examples | — |
+| Rate Limit Signal | — |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | na |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 11.8** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/lido/](https://apis.io/providers/lido/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Lido: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/lido/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
